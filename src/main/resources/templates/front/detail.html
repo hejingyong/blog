@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>首页</title>
+    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <link th:href="@{/editormd/css/editormd.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/editormd.css}"/>
+
+
+
+</head>
+
+
+
+
+
+
+<body>
+<!--引入导航栏-->
+<div th:include="/common/top :: top"></div>
+
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title" th:utext="${article.title}"></h3>
+        </div>
+        <div class="panel-body"  >
+            <div id="layout">
+                <div id="test">
+                    <textarea style="display:none;" th:text="${article.content}"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script th:href="@{/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/editormd/lib/marked.min.js}"></script>
+<script th:src="@{/editormd/lib/prettify.min.js}"></script>
+<script th:src="@{/editormd/lib/raphael.min.js}"></script>
+<script th:src="@{/editormd/lib/underscore.min.js}"></script>
+<script th:src="@{/editormd/lib/sequence-diagram.min.js}"></script>
+<script th:src="@{/editormd/lib/flowchart.min.js}"></script>
+<script th:src="@{/editormd/lib/jquery.flowchart.min.js}"></script>
+<script th:src="@{/editormd/editormd.js}"></script>
+
+<script type="text/javascript">
+    var testEditor;
+    editormd.markdownToHTML("test", {
+        htmlDecode: "style,script,iframe",
+        emoji: true,
+        taskList: true,
+        tex: true,  // 默认不解析
+        flowChart: true,  // 默认不解析
+        sequenceDiagram: true  // 默认不解析
+    });
+</script>
+
+</body>
+</html>
